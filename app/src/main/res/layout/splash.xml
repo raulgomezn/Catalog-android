@@ -7,15 +7,17 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewCatalog"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/app_store" />
+        android:src="@drawable/app_store"
+        android:visibility="invisible"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/catalog"
-        android:id="@+id/textView"
-        android:layout_gravity="center_horizontal" />
+        android:id="@+id/textViewCatalog"
+        android:layout_gravity="center_horizontal"
+        android:visibility="invisible"/>
 </LinearLayout>
