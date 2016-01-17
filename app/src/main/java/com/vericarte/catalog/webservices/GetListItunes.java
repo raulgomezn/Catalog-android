@@ -15,21 +15,30 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 /**
+ * Clase Webservices para obtener el listado de itunes por GET.
  * Created by raulgomez on 11/01/16.
  */
 public class GetListItunes {
 
+    //region Variables
     private final String LOG_TAG = "GetListItunes";
     private URI uriMapper;
     private HttpGetJson request;
     //private Categories categoryBR;
     //private Aplications appBR;
+    //endregion
 
+    //region Constructor
+    /**
+     * Constructor
+     */
     public GetListItunes() {
         this.uriMapper = null;
         this.request = new HttpGetJson();
     }
+    //endregion
 
+    //region Metodos
     public void getList() throws URISyntaxException {
         try {
             this.uriMapper = new URI("https://itunes.apple.com/us/rss/topfreeapplications/limit=20/json");
@@ -67,9 +76,10 @@ public class GetListItunes {
                     }
             );
         } catch (IOException e) {
-            Log.d(LOG_TAG, "No fue posible quick Answer ");
+            Log.d(LOG_TAG, "No fue posible obtener la lista.");
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
+    //endregion
 }

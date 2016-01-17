@@ -25,25 +25,24 @@ import java.io.UnsupportedEncodingException;
 import java.net.URI;
 
 /**
+ * Clase webserices encargada de hacer la comunicación tipo GET.
  * Created by raulgomez on 11/01/16.
  */
 public class HttpGetJson {
-    private final static String LOG_TAG = "Http Service";
 
+    //region Variables
+    private final static String LOG_TAG = "Http Service";
     // Tiempo maximo de espera para establecer conexion, 20 segundos.
     private static final int timeoutConnection = 60000;
     // Tiempo maximo de espera para esperar datos, 20 segundos.
     private static final int timeoutSocket = 60000;
-    /**
-     * Encapsula la comunicación con unservicio a traves de HTTP
-     */
+    //Encapsula la comunicación con unservicio a traves de HTTP
     HttpClient client = null;
-
-    /**
-     * Listado de parámetros a enviar al servicio
-     */
+    //Listado de parámetros a enviar al servicio
     JSONObject paramObject;
+    //endregion
 
+    //region Constructor
     public HttpGetJson() {
 
         HttpParams httpParameters = new BasicHttpParams();
@@ -53,7 +52,9 @@ public class HttpGetJson {
         client = new DefaultHttpClient(httpParameters);
         paramObject = new JSONObject();
     }
+    //endregion
 
+    //region Metodo publicos
     public HttpEntity getParamObject() {
         HttpEntity entity = null;
         try {
@@ -86,7 +87,6 @@ public class HttpGetJson {
             // Ejecución éxitosa de la petición al servidor
             try {
                 // Si se lanza una IOException, esta continua hasta el BR
-
                 HttpEntity resEntity = res.getEntity();
 
                 String resEntityString = EntityUtils.toString(resEntity);
@@ -113,6 +113,13 @@ public class HttpGetJson {
         }
     }
 
+    /**
+     * Envia la petición.
+     * @param uri Url en formtato URI.
+     * @param jsonSer El json serealizado.
+     * @throws IOException Excepción.
+     * @throws JSONException Excepción.
+     */
     public void send(URI uri, IJSONDeserializer jsonSer) throws IOException, JSONException {
 
         HttpGet req = new HttpGet();
@@ -123,5 +130,6 @@ public class HttpGetJson {
 
         send(req, null, jsonSer);
     }
+    //endregion
 
 }
