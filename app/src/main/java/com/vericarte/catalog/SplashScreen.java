@@ -16,6 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.vericarte.catalog.provider.DataBaseHelper;
 import com.vericarte.catalog.webservices.GetListItunes;
 
 import java.net.URISyntaxException;
@@ -25,6 +26,8 @@ import java.net.URISyntaxException;
  */
 public class SplashScreen extends Activity {
     private GetListItunes list;
+    private DataBaseHelper openHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,12 +35,13 @@ public class SplashScreen extends Activity {
 
         final TextView titulo = (TextView) findViewById(R.id.textViewCatalog);
         final ImageView imagen = (ImageView) findViewById(R.id.imageViewCatalog);
+        //Crea la BD
+        openHelper = new DataBaseHelper(this);
 
         CargarAnimacion(titulo, imagen);
         list = new GetListItunes();
         Download algo = new Download();
         algo.execute("");
-        //CargarMain();
     }
 
     private void CargarMain() {
