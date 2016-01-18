@@ -66,7 +66,7 @@ public class CustomListAdapter extends BaseAdapter {
             {
                 holder = (ViewHolder)convertView.getTag();
             }
-            holder.image.setImageBitmap(imgList[position]); //setBackgroundResource (imgList[position]);
+            holder.image.setImageBitmap(imgList[position]);
             holder.heading.setText(headingList[position]);
             holder.subHeading.setText(subHeadingList[position]);
         }catch(Exception e){
