@@ -1,7 +1,10 @@
 package com.vericarte.catalog.webservices;
 
+import android.content.Context;
 import android.util.Log;
 
+import com.vericarte.catalog.bussines.Aplications;
+import com.vericarte.catalog.bussines.Categories;
 import com.vericarte.catalog.entities.Aplication;
 import com.vericarte.catalog.entities.Category;
 import com.vericarte.catalog.interfaces.IJSONDeserializer;
@@ -24,17 +27,19 @@ public class GetListItunes {
     private final String LOG_TAG = "GetListItunes";
     private URI uriMapper;
     private HttpGetJson request;
-    //private Categories categoryBR;
-    //private Aplications appBR;
+    private Categories categoryBR;
+    private Aplications appBR;
     //endregion
 
     //region Constructor
     /**
      * Constructor
      */
-    public GetListItunes() {
+    public GetListItunes(Context context) {
         this.uriMapper = null;
         this.request = new HttpGetJson();
+        this.categoryBR = new Categories(context);
+        this.appBR = new Aplications(context);
     }
     //endregion
 
@@ -63,7 +68,8 @@ public class GetListItunes {
                                         } catch (Exception e) {
                                             e.printStackTrace();
                                         }
-                                        //quickAnswers.add(quickAnswer);
+                                        categoryBR.add(cat);
+                                        appBR.add(app);
                                     }
                                 }
 

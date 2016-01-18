@@ -22,6 +22,7 @@ import com.vericarte.catalog.webservices.GetListItunes;
 import java.net.URISyntaxException;
 
 /**
+ * Clase para el Splash de la aplicación.
  * Created by raulgomez on 10/01/16.
  */
 public class SplashScreen extends Activity {
@@ -39,7 +40,7 @@ public class SplashScreen extends Activity {
         openHelper = new DataBaseHelper(this);
 
         CargarAnimacion(titulo, imagen);
-        list = new GetListItunes();
+        list = new GetListItunes(this);
         Download algo = new Download();
         algo.execute("");
     }
@@ -98,8 +99,6 @@ public class SplashScreen extends Activity {
 
         @Override
         protected String doInBackground(String... params) {
-
-            //INSERT YOUR FUNCTION CALL HERE
             try {
                 list.getList();
             } catch (URISyntaxException e) {
