@@ -1,10 +1,13 @@
 package com.vericarte.catalog;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.vericarte.catalog.bussines.Aplications;
@@ -42,6 +45,16 @@ public class MainActivity extends AppCompatActivity {
         adapter = new CustomListAdapter(list, MainActivity.this);
         // set the custom adapter
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                int id = (int) adapterView.getItemIdAtPosition(i);
+                Intent intent = new Intent(MainActivity.this, Details.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

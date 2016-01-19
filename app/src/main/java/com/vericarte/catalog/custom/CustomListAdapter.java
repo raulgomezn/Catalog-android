@@ -21,31 +21,27 @@ import java.util.List;
 public class CustomListAdapter extends BaseAdapter {
 
     private LayoutInflater mInflater;
-    private String[] headingList;
-    private String[] subHeadingList;
-    private Bitmap[] imgList;
+    List<Aplication> list;
 
     public CustomListAdapter(List<Aplication> list, Context context){
         mInflater = LayoutInflater.from(context);
 
-        this.headingList = getNames(list);
-        this.subHeadingList = getPrice(list);
-        this.imgList = getImage(list);
+        this.list=list;
     }
 
     @Override
     public int getCount() {
-        return headingList.length;
+        return list.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return headingList[position];
+        return list.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return position;
+        return (long) list.get(position).getId();
     }
 
     @Override
@@ -66,9 +62,9 @@ public class CustomListAdapter extends BaseAdapter {
             {
                 holder = (ViewHolder)convertView.getTag();
             }
-            holder.image.setImageBitmap(imgList[position]);
-            holder.heading.setText(headingList[position]);
-            holder.subHeading.setText(subHeadingList[position]);
+            holder.image.setImageBitmap(getImage(list.get(position)));
+            holder.heading.setText(list.get(position).getName());
+            holder.subHeading.setText(list.get(position).getPrice());
         }catch(Exception e){
             e.printStackTrace();
             return null;
@@ -104,6 +100,14 @@ public class CustomListAdapter extends BaseAdapter {
             Bitmap bmp= BitmapFactory.decodeByteArray(list.get(i).getImage(), 0, list.get(i).getImage().length);
             response[i]= bmp;
         }
+        return response;
+    }
+    private Bitmap getImage(Aplication aplication){
+        Bitmap response;
+
+        Bitmap bmp = BitmapFactory.decodeByteArray(aplication.getImage(), 0, aplication.getImage().length);
+        response= bmp;
+
         return response;
     }
 }
