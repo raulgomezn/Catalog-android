@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_favorite:
-                // User chose the "Favorite" action, mark the current item
-                // as a favorite...
+                Intent intent = new Intent(MainActivity.this, Category.class);
+                startActivity(intent);
                 return true;
 
             default:
