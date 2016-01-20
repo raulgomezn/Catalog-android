@@ -7,8 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.vericarte.catalog.entities.database.AplicationTable;
-import com.vericarte.catalog.entities.database.CategoryTable;
+import com.vericarte.catalog.entitie.database.AplicationTable;
+import com.vericarte.catalog.entitie.database.CategoryTable;
 
 
 /**

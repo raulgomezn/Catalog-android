@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.vericarte.catalog.R;
-import com.vericarte.catalog.entities.Aplication;
+import com.vericarte.catalog.entitie.Aplication;
 
 import java.util.List;
 

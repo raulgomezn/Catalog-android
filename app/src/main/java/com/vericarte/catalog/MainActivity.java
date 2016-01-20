@@ -12,9 +12,8 @@ import android.widget.ListView;
 
 import com.vericarte.catalog.bussines.Aplications;
 import com.vericarte.catalog.custom.CustomListAdapter;
-import com.vericarte.catalog.entities.Aplication;
+import com.vericarte.catalog.entitie.Aplication;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {

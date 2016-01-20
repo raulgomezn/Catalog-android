@@ -5,8 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.vericarte.catalog.entities.Category;
-import com.vericarte.catalog.entities.database.CategoryTable;
+import com.vericarte.catalog.entitie.Category;
+import com.vericarte.catalog.entitie.database.CategoryTable;
 import com.vericarte.catalog.provider.DataBaseHelper;
 
 import java.util.LinkedList;

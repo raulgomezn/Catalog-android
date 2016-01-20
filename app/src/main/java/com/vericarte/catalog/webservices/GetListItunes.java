@@ -5,8 +5,8 @@ import android.util.Log;
 
 import com.vericarte.catalog.bussines.Aplications;
 import com.vericarte.catalog.bussines.Categories;
-import com.vericarte.catalog.entities.Aplication;
-import com.vericarte.catalog.entities.Category;
+import com.vericarte.catalog.entitie.Aplication;
+import com.vericarte.catalog.entitie.Category;
 import com.vericarte.catalog.interfaces.IJSONDeserializer;
 
 import org.json.JSONArray;

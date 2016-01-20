@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.vericarte.catalog.bussines.Aplications;
-import com.vericarte.catalog.entities.Aplication;
+import com.vericarte.catalog.entitie.Aplication;
 
 /**
  * Created by raulgomez on 19/01/16.

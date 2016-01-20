@@ -1,4 +1,4 @@
-package com.vericarte.catalog.entities.database;
+package com.vericarte.catalog.entitie.database;
 
 /**
  * Clase que genera los script de BD..

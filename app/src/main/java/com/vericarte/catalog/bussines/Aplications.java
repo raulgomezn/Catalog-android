@@ -6,8 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.vericarte.catalog.entities.Aplication;
-import com.vericarte.catalog.entities.database.AplicationTable;
+import com.vericarte.catalog.entitie.Aplication;
+import com.vericarte.catalog.entitie.database.AplicationTable;
 import com.vericarte.catalog.provider.DataBaseHelper;
 
 import java.text.ParseException;

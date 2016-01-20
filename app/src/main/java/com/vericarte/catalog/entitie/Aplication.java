@@ -1,4 +1,4 @@
-package com.vericarte.catalog.entities;
+package com.vericarte.catalog.entitie;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
