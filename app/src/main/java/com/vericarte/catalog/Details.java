@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,7 +15,7 @@ import com.vericarte.catalog.entitie.Aplication;
 /**
  * Created by raulgomez on 19/01/16.
  */
-public class Details extends Activity {
+public class Details extends AppCompatActivity {
     Aplications app;
     Aplication entity;
     TextView title;
@@ -65,4 +66,10 @@ public class Details extends Activity {
 
         return response;
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.animator.push_right_in, R.animator.push_right_out);
+    }
+
 }

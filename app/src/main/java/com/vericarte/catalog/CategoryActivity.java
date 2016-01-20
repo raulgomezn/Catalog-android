@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -17,7 +18,7 @@ import java.util.List;
 /**
  * Created by raul.gomez on 19/01/2016.
  */
-public class CategoryActivity extends Activity{
+public class CategoryActivity extends AppCompatActivity {
     CategoryAdapter adapter;
     Categories cat;
     List<Category> list;
@@ -52,5 +53,10 @@ public class CategoryActivity extends Activity{
                 startActivity(intent);
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.animator.push_right_in, R.animator.push_right_out);
     }
 }

@@ -9,7 +9,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.ListView;
 
@@ -79,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, Details.class);
                     intent.putExtra("id", id);
                     startActivity(intent);
+                    overridePendingTransition(R.animator.push_right_in, R.animator.push_right_out);
                 }
             });
         }
@@ -98,11 +98,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_favorite:
                 Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.animator.push_right_in, R.animator.push_right_out);
                 return true;
 
             default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
 
         }
