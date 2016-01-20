@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.vericarte.catalog.R;
+import com.vericarte.catalog.entitie.Category;
 
 import java.util.List;
 
@@ -20,9 +21,9 @@ import java.util.List;
 public class CategoryAdapter extends BaseAdapter {
 
     private LayoutInflater mInflater;
-    List<Catergory> list;
+    List<Category> list;
 
-    public CategoryAdapter(List<Catergory> list, Context context){
+    public CategoryAdapter(List<Category> list, Context context){
         mInflater = LayoutInflater.from(context);
         this.list=list;
     }
@@ -72,7 +73,7 @@ public class CategoryAdapter extends BaseAdapter {
         public TextView heading;
     }
 
-    private String[] getNames(List<Catergory> list){
+    private String[] getNames(List<Category> list){
         String[] response = new String[list.size()];
         for (int i=0; i<list.size(); i++) {
             response[i]= list.get(i).getName();
