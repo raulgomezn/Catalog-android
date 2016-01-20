@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
             list = app.all();
         }
 
-        //call the custom adapter
+        // Call the custom adapter
         adapter = new CustomListAdapter(list, MainActivity.this);
-        // set the custom adapter
+        // Set the custom adapter
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_favorite:
-                Intent intent = new Intent(MainActivity.this, Category.class);
+                Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
                 startActivity(intent);
                 return true;
 
