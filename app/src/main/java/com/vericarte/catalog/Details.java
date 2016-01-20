@@ -1,6 +1,7 @@
 package com.vericarte.catalog;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -25,7 +26,14 @@ public class Details extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.details);
-
+        boolean tabletSize = getResources().getBoolean(R.bool.isTablet);
+        if (tabletSize) {
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+        else
+        {
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
         title = (TextView) findViewById(R.id.textViewTitle);
         summary = (TextView) findViewById(R.id.textViewSummary);
         price = (TextView) findViewById(R.id.textViewPrice);

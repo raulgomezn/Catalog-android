@@ -1,6 +1,7 @@
 package com.vericarte.catalog;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,6 +9,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.GridLayout;
+import android.widget.GridView;
 import android.widget.ListView;
 
 import com.vericarte.catalog.bussines.Aplications;
@@ -19,6 +22,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     ListView listView;
+    GridView gridLayout;
     CustomListAdapter adapter;
     Aplications app;
     List<Aplication> list;
@@ -28,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         app = new Aplications(this);
-        listView = (ListView)findViewById(R.id.customlist);
+
         Bundle extras = getIntent().getExtras();
         if (extras != null)
         {
@@ -39,21 +43,47 @@ public class MainActivity extends AppCompatActivity {
         {
             list = app.all();
         }
-
-        // Call the custom adapter
+        boolean tabletSize = getResources().getBoolean(R.bool.isTablet);
+        if (tabletSize) {
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+        else
+        {
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
         adapter = new CustomListAdapter(list, MainActivity.this);
-        // Set the custom adapter
-        listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                int id = (int) adapterView.getItemIdAtPosition(i);
-                Intent intent = new Intent(MainActivity.this, Details.class);
-                intent.putExtra("id", id);
-                startActivity(intent);
-            }
-        });
+        if (tabletSize) {
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            gridLayout =(GridView)findViewById(R.id.customGrid);
+            gridLayout.setAdapter(adapter);
+            gridLayout.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    int id = (int) adapterView.getItemIdAtPosition(i);
+                    Intent intent = new Intent(MainActivity.this, Details.class);
+                    intent.putExtra("id", id);
+                    startActivity(intent);
+                }
+            });
+        }
+        else {
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+            listView = (ListView)findViewById(R.id.customlist);
+            listView.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    int id = (int) adapterView.getItemIdAtPosition(i);
+                    Intent intent = new Intent(MainActivity.this, Details.class);
+                    intent.putExtra("id", id);
+                    startActivity(intent);
+                }
+            });
+        }
+
+
     }
 
     @Override

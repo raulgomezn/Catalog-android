@@ -3,6 +3,7 @@ package com.vericarte.catalog;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -28,12 +29,19 @@ import java.net.URISyntaxException;
 public class SplashScreen extends Activity {
     private GetListItunes list;
     private DataBaseHelper openHelper;
-
+    ProgressDialog pDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
-
+        boolean tabletSize = getResources().getBoolean(R.bool.isTablet);
+        if (tabletSize) {
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+        else
+        {
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
         final TextView titulo = (TextView) findViewById(R.id.textViewCatalog);
         final ImageView imagen = (ImageView) findViewById(R.id.imageViewCatalog);
         //Crea la BD
@@ -74,7 +82,7 @@ public class SplashScreen extends Activity {
     }
 
     private class Download extends AsyncTask<String, Void, String> {
-        ProgressDialog pDialog;
+
 
         @Override
         protected void onPreExecute() {
@@ -119,7 +127,8 @@ public class SplashScreen extends Activity {
 
     @Override
     protected void onPause() {
-        super.onPause();
+        super.onPause();if(pDialog != null)
+            pDialog.dismiss();
         finish();
     }
 }
